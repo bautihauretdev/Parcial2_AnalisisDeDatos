@@ -180,7 +180,7 @@
 
 .calendario-grid {
     display: grid;
-    grid-template-columns: auto repeat(7, minmax(140px, 1fr));
+    grid-template-columns: auto repeat(3, minmax(140px, 1fr));
     gap: 0.5rem;
     min-width: 100%; /* ocupa todo el ancho disponible dentro del scroll */
     width: max-content; /* se expande según contenido */

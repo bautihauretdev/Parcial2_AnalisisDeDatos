@@ -25,32 +25,30 @@
                             <%-- Banco Provincia --%>
                             <asp:Label ID="lblProvincia" runat="server" CssClass="calendario-hora text-end text-secondary font-monospace pe-2" Text="Banco Provincia"></asp:Label>
 
-                            <asp:TextBox ID="btnProvincia2025" runat="server" CssClass="calendario-turno" Text="$" />
-                            <asp:TextBox ID="btnProvincia2024" runat="server" CssClass="calendario-turno" Text="$" />
-                            <asp:TextBox ID="btnProvincia2023" runat="server" CssClass="calendario-turno" Text="$" />
+                            <asp:TextBox ID="btnProvincia2025" runat="server" CssClass="calendario-turno" Text="" />
+                            <asp:TextBox ID="btnProvincia2024" runat="server" CssClass="calendario-turno" Text="" />
+                            <asp:TextBox ID="btnProvincia2023" runat="server" CssClass="calendario-turno" Text="" />
 
 
                             <%-- Banco Nación --%>
                             <asp:Label ID="lblNacion" runat="server" CssClass="calendario-hora text-end text-secondary font-monospace pe-2" Text="Banco Nación"></asp:Label>
                             <%-- Turnos de la hora por día--%>
-                            <asp:TextBox ID="btnNacion2025" runat="server" CssClass="calendario-turno" Text="$" />
-                            <asp:TextBox ID="btnNacion2024" runat="server" CssClass="calendario-turno" Text="$" />
-                            <asp:TextBox ID="btnNacion2023" runat="server" CssClass="calendario-turno" Text="$" />
+                            <asp:TextBox ID="btnNacion2025" runat="server" CssClass="calendario-turno" Text="" />
+                            <asp:TextBox ID="btnNacion2024" runat="server" CssClass="calendario-turno" Text="" />
+                            <asp:TextBox ID="btnNacion2023" runat="server" CssClass="calendario-turno" Text="" />
 
                             <%-- Banco Hipotecario --%>
                             <asp:Label ID="lblHipotecario" runat="server" CssClass="calendario-hora text-end text-secondary font-monospace pe-2" Text="Banco Hipotecario"></asp:Label>
                             <%-- Turnos de la hora por día--%>
-                            <asp:TextBox ID="btnHipotecario2025" runat="server" CssClass="calendario-turno" Text="$" />
-                            <asp:TextBox ID="btnHipotecario2024" runat="server" CssClass="calendario-turno" Text="$" />
-                            <asp:TextBox ID="btnHipotecario2023" runat="server" CssClass="calendario-turno" Text="$" />
+                            <asp:TextBox ID="btnHipotecario2025" runat="server" CssClass="calendario-turno" Text="" />
+                            <asp:TextBox ID="btnHipotecario2024" runat="server" CssClass="calendario-turno" Text="" />
+                            <asp:TextBox ID="btnHipotecario2023" runat="server" CssClass="calendario-turno" Text="" />
                         </div>
                     </div>
 
                     <!-- BOTON CALCULAR -->
                     <div class="footer-calendario">
-                        <button type="button" class="boton-principal" data-bs-toggle="modal" data-bs-target="#modalEditarTurno">
-                            Calcular
-                        </button>
+                        <asp:Button ID="btnCalcular" runat="server" Text="Calcular" CssClass="boton-principal" />
                     </div>
 
                 </div>
