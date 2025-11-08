@@ -48,12 +48,49 @@
 
                     <!-- BOTON CALCULAR -->
                     <div class="footer-calendario">
-                        <asp:Button ID="btnCalcular" runat="server" Text="Calcular" CssClass="boton-principal" />
+                        <asp:Button ID="btnCalcular" runat="server" Text="Calcular" CssClass="boton-principal" OnClick="btnCalcular_Click" />
                     </div>
 
                 </div>
             </div>
         </div>
 
+         <%-- Este Label muestra errores si el usuario ingresa texto en lugar de numeros --%>
+         <asp:Label ID="lblError" runat="server" CssClass="text-danger" Visible="false"></asp:Label>
+
+         <%-- LABEL PARA BANCO PROVINCIA (FALTA FRONT)--%>
+        <div>
+             <h4>BANCO PROVINCIA</h4>
+         <asp:Label ID="lblProvinciaAnual" runat="server" Text="" />
+         <asp:Label ID="lblProvinciaMensual" runat="server" Text="" />
+         <asp:Label ID="lblProvinciaTrimestral" runat="server" Text="" />
+
+        </div>
+
+        <%-- LABEL PARA BANCO NACION (FALTA FRONT)--%>
+        <div>   
+         <h4>BANCO NACION</h4>
+          <asp:Label ID="lblNacionAnual" runat="server" Text="" />
+          <asp:Label ID="lblNacionMensual" runat="server" Text="" />
+          <asp:Label ID="lblNacionTrimestral" runat="server" Text=""/>
+        
+        </div>
+      
+        
+        <%-- LABEL PARA BANCO HIPOTECARIO (FALTA FRONT)--%>+
+        <div>   
+            <h4>BANCO HIPOTECARIO</h4>
+        <asp:Label ID="lblHipotecarioAnual" runat="server" Text="" />
+        <asp:Label ID="lblHipotecarioMensual" runat="server" Text="" />   
+        <asp:Label ID="lblHipotecarioTrimestral" runat="server" Text=""></asp:Label>
+
+        </div>
+
+        <%-- LABEL DE RESULTADO FINAL--%>
+
+        <h2>Mejor Opción Encontrada:</h2>
+        <asp:Label ID="lblMejorOpcion" runat="server"></asp:Label>
+        
+        
     </div>
 </asp:Content>
