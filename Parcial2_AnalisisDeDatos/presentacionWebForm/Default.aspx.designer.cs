@@ -168,6 +168,15 @@ namespace presentacionWebForm
         protected global::System.Web.UI.WebControls.Button btnCalcular;
 
         /// <summary>
+        /// pnlResultados control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Panel pnlResultados;
+
+        /// <summary>
         /// lblAnual control.
         /// </summary>
         /// <remarks>

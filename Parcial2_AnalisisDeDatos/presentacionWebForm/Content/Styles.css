@@ -12,7 +12,7 @@ body {
     overflow-x: hidden;
 }
 
-h2, h4 {
+h2, h3 {
     color: #E8E8E8;
     font-weight: 600;
     margin-bottom: 0.75rem;
@@ -68,14 +68,14 @@ h2, h4 {
 
 /* ==================== CABECERA ==================== */
 
-.calendario-header {
+.planilla-header {
     display: flex;
     justify-content: center;
     align-items: center;
-    margin-bottom: 6px; 
+    margin-bottom: 6px;
 }
 
-    .calendario-header h2 {
+    .planilla-header h2 {
         color: #E8E8E8;
         font-size: 1.35rem;
         margin: 0;
@@ -83,7 +83,7 @@ h2, h4 {
 
 /* ==================== SECCIÓN SCROLL ==================== */
 
-.calendario-scroll {
+.planilla-scroll {
     overflow-x: auto;
     width: 100%;
     padding: 0 20px 0px 20px;
@@ -91,7 +91,7 @@ h2, h4 {
 
 /* ==================== GRILLA ==================== */
 
-.calendario-grid {
+.planilla-grid {
     display: grid;
     grid-template-columns: auto repeat(3, minmax(130px, 1fr)); 
     gap: 0.35rem; 
@@ -99,16 +99,16 @@ h2, h4 {
 }
 
 /* Cabecera de años */
-.calendario-cabecera-dias {
+.planilla-cabecera-anios {
     padding: 0.35rem 0.5rem;
     text-align: center;
     color: #6c757d;
     font-weight: 600;
-    font-size: 0.9rem; 
+    font-size: 1rem; 
 }
 
 /* Etiqueta de nombre del banco */
-.calendario-hora {
+.planilla-banco {
     align-self: center;
     padding-right: 0.35rem;
     text-align: right;
@@ -118,8 +118,8 @@ h2, h4 {
 }
 
 /* Campos de tasas */
-.calendario-turno {
-    padding: 0.4rem 0.6rem; 
+.planilla-campo {
+    padding: 0.4rem 0.6rem;
     text-align: center;
     border-radius: 0.25rem;
     border: 1px solid #dee2e6;
@@ -129,31 +129,32 @@ h2, h4 {
     transition: background-color 0.2s ease-in-out;
 }
 
-    .calendario-turno:focus {
+    .planilla-campo:focus {
         outline: none;
         background-color: #ffffff;
     }
 
 /* ==================== BOTÓN CALCULAR ==================== */
 
-.footer-calendario {
+.footer-planilla {
     display: flex;
     justify-content: center;
     margin-top: 0.75rem;
+    padding: 0 20px 0px 20px;
+    /* ACAAAAAA */
 }
 
 /* ==================== RESULTADOS ==================== */
 
-h4 {
+h3 {
     margin-top: 1rem;
     color: #38e07b;
-    font-size: 1.1rem;
+    font-size: 22px;
+    text-align: center;
 }
 
 #lblMejorOpcion {
     display: block;
     margin-top: 0.75rem;
     font-size: 1.1rem; 
-    font-weight: 600;
-    color: #38e07b;
 }

@@ -17,7 +17,7 @@ namespace presentacionWebForm
             // Ocultamos el mensaje de error al cargar la página
             if (!IsPostBack)
             {
-                lblError.Visible = false;
+                LimpiarTodo();
             }
         }
 
@@ -28,28 +28,44 @@ namespace presentacionWebForm
                 // Cada vez que calculamos, primero ocultamos el mensaje de error.
                 lblError.Visible = false;
 
+                // Validamos que no haya campos vacíos
+                if (string.IsNullOrWhiteSpace(btnProvincia2025.Text) ||
+                    string.IsNullOrWhiteSpace(btnProvincia2024.Text) ||
+                    string.IsNullOrWhiteSpace(btnProvincia2023.Text) ||
+                    string.IsNullOrWhiteSpace(btnNacion2025.Text) ||
+                    string.IsNullOrWhiteSpace(btnNacion2024.Text) ||
+                    string.IsNullOrWhiteSpace(btnNacion2023.Text) ||
+                    string.IsNullOrWhiteSpace(btnHipotecario2025.Text) ||
+                    string.IsNullOrWhiteSpace(btnHipotecario2024.Text) ||
+                    string.IsNullOrWhiteSpace(btnHipotecario2023.Text))
+                {
+                    lblError.Text = "Todos los campos deben estar completos.";
+                    lblError.Visible = true;
+                }
+                else
+                {
+                    lblError.Visible = false;
 
+                    // ----- (1) LEER Y VALIDAR DATOS DE LOS TEXTBOX -----
+                    // Lee las tasas de los 9 TextBoxes.
+                    // Usamos un metodo 'helper' (TryParseDecimal) que creamos más abajo
+                    // para convertir el texto en numero y validar que no hayan puesto letras.
 
-                // ----- (1) LEER Y VALIDAR DATOS DE LOS TEXTBOX -----
-                // Lee las tasas de los 9 TextBoxes.
-                // Usamos un metodo 'helper' (TryParseDecimal) que creamos más abajo
-                // para convertir el texto en numero y validar que no hayan puesto letras.
-
-                List<decimal> tasasProvincia = new List<decimal>
+                    List<decimal> tasasProvincia = new List<decimal>
                 {
                     TryParseDecimal(btnProvincia2025.Text),
                     TryParseDecimal(btnProvincia2024.Text),
                     TryParseDecimal(btnProvincia2023.Text)
                 };
 
-                List<decimal> tasasNacion = new List<decimal>
+                    List<decimal> tasasNacion = new List<decimal>
                 {
                     TryParseDecimal(btnNacion2025.Text),
                     TryParseDecimal(btnNacion2024.Text),
                     TryParseDecimal(btnNacion2023.Text)
                 };
 
-                List<decimal> tasasHipotecario = new List<decimal>
+                    List<decimal> tasasHipotecario = new List<decimal>
                 {
                     TryParseDecimal(btnHipotecario2025.Text),
                     TryParseDecimal(btnHipotecario2024.Text),
@@ -58,81 +74,84 @@ namespace presentacionWebForm
 
 
 
-                // ----- PASO 2: CALCULAR PROMEDIO DE LAS TASAS ANUAL DE CADA BANCO -----
-                decimal TNA_Provincia = tasasProvincia.Average(); // La f .Average() calcula el promedio.
-                decimal TNA_Nacion = tasasNacion.Average();
-                decimal TNA_Hipotecario = tasasHipotecario.Average();
+                    // ----- PASO 2: CALCULAR PROMEDIO DE LAS TASAS ANUAL DE CADA BANCO -----
+                    decimal TNA_Provincia = tasasProvincia.Average(); // La f .Average() calcula el promedio.
+                    decimal TNA_Nacion = tasasNacion.Average();
+                    decimal TNA_Hipotecario = tasasHipotecario.Average();
 
 
 
-                // --- PASO 3: EVALUAR MODALIDADES ---
-                // Usaremos un diccionario para guardar todos los montos finales y encontrar el mejor.
-                // El string (clave) será el nombre (Ej: "Banco Provincia (Mensual)")
-                // El decimal (valor) será el monto final generado.
-                Dictionary<string, decimal> resultados = new Dictionary<string, decimal>();
+                    // --- PASO 3: EVALUAR MODALIDADES ---
+                    // Usaremos un diccionario para guardar todos los montos finales y encontrar el mejor.
+                    // El string (clave) será el nombre (Ej: "Banco Provincia (Mensual)")
+                    // El decimal (valor) será el monto final generado.
+                    Dictionary<string, decimal> resultados = new Dictionary<string, decimal>();
 
-                // -- Banco Provincia --
-                decimal provAnual = CalcularRendimientoAnual(CAPITAL_INICIAL, TNA_Provincia);
-                decimal provTrim = CalcularRendimientoTrimestral(CAPITAL_INICIAL, TNA_Provincia);
-                decimal provMes = CalcularRendimientoMensual(CAPITAL_INICIAL, TNA_Provincia);
-                resultados.Add("Banco Provincia (Anual)", provAnual);
-                resultados.Add("Banco Provincia (Trimestral)", provTrim);
-                resultados.Add("Banco Provincia (Mensual)", provMes);
+                    // -- Banco Provincia --
+                    decimal provAnual = CalcularRendimientoAnual(CAPITAL_INICIAL, TNA_Provincia);
+                    decimal provTrim = CalcularRendimientoTrimestral(CAPITAL_INICIAL, TNA_Provincia);
+                    decimal provMes = CalcularRendimientoMensual(CAPITAL_INICIAL, TNA_Provincia);
+                    resultados.Add("Banco Provincia (Anual)", provAnual);
+                    resultados.Add("Banco Provincia (Trimestral)", provTrim);
+                    resultados.Add("Banco Provincia (Mensual)", provMes);
 
-                // -- Banco Nación --
-                decimal nacionAnual = CalcularRendimientoAnual(CAPITAL_INICIAL, TNA_Nacion);
-                decimal nacionTrim = CalcularRendimientoTrimestral(CAPITAL_INICIAL, TNA_Nacion);
-                decimal nacionMes = CalcularRendimientoMensual(CAPITAL_INICIAL, TNA_Nacion);
-                resultados.Add("Banco Nación (Anual)", nacionAnual);
-                resultados.Add("Banco Nación (Trimestral)", nacionTrim);
-                resultados.Add("Banco Nación (Mensual)", nacionMes);
+                    // -- Banco Nación --
+                    decimal nacionAnual = CalcularRendimientoAnual(CAPITAL_INICIAL, TNA_Nacion);
+                    decimal nacionTrim = CalcularRendimientoTrimestral(CAPITAL_INICIAL, TNA_Nacion);
+                    decimal nacionMes = CalcularRendimientoMensual(CAPITAL_INICIAL, TNA_Nacion);
+                    resultados.Add("Banco Nación (Anual)", nacionAnual);
+                    resultados.Add("Banco Nación (Trimestral)", nacionTrim);
+                    resultados.Add("Banco Nación (Mensual)", nacionMes);
 
-                // -- Banco Hipotecario --
-                decimal hipoAnual = CalcularRendimientoAnual(CAPITAL_INICIAL, TNA_Hipotecario);
-                decimal hipoTrim = CalcularRendimientoTrimestral(CAPITAL_INICIAL, TNA_Hipotecario);
-                decimal hipoMes = CalcularRendimientoMensual(CAPITAL_INICIAL, TNA_Hipotecario);
-                resultados.Add("Banco Hipotecario (Anual)", hipoAnual);
-                resultados.Add("Banco Hipotecario (Trimestral)", hipoTrim);
-                resultados.Add("Banco Hipotecario (Mensual)", hipoMes);
-
-
-
-                // ----- PASO 4: MOSTRAR RESULTADOS -----
-                // Mostramos los rendimientos (Ganancia = Monto Final - Capital Inicial)
-                // Usamos .ToString("C") para formatearlo como moneda (Ej: $150.000,00)
-
-                // Provincia
-                lblProvinciaAnual.Text = (provAnual - CAPITAL_INICIAL).ToString("C", new CultureInfo("es-AR"));
-                lblProvinciaTrimestral.Text = (provTrim - CAPITAL_INICIAL).ToString("C", new CultureInfo("es-AR"));
-                lblProvinciaMensual.Text = (provMes - CAPITAL_INICIAL).ToString("C", new CultureInfo("es-AR"));
-
-                // Nación
-                lblNacionAnual.Text = (nacionAnual - CAPITAL_INICIAL).ToString("C", new CultureInfo("es-AR"));
-                lblNacionTrimestral.Text = (nacionTrim - CAPITAL_INICIAL).ToString("C", new CultureInfo("es-AR"));
-                lblNacionMensual.Text = (nacionMes - CAPITAL_INICIAL).ToString("C", new CultureInfo("es-AR"));
-
-                // Hipotecario
-                lblHipotecarioAnual.Text = (hipoAnual - CAPITAL_INICIAL).ToString("C", new CultureInfo("es-AR"));
-                lblHipotecarioTrimestral.Text = (hipoTrim - CAPITAL_INICIAL).ToString("C", new CultureInfo("es-AR"));
-                lblHipotecarioMensual.Text = (hipoMes - CAPITAL_INICIAL).ToString("C", new CultureInfo("es-AR"));
+                    // -- Banco Hipotecario --
+                    decimal hipoAnual = CalcularRendimientoAnual(CAPITAL_INICIAL, TNA_Hipotecario);
+                    decimal hipoTrim = CalcularRendimientoTrimestral(CAPITAL_INICIAL, TNA_Hipotecario);
+                    decimal hipoMes = CalcularRendimientoMensual(CAPITAL_INICIAL, TNA_Hipotecario);
+                    resultados.Add("Banco Hipotecario (Anual)", hipoAnual);
+                    resultados.Add("Banco Hipotecario (Trimestral)", hipoTrim);
+                    resultados.Add("Banco Hipotecario (Mensual)", hipoMes);
 
 
 
-                // ----- PASO 5: MOSTRAR MEJOR OPCIÓN -----
+                    // ----- PASO 4: MOSTRAR RESULTADOS -----
+                    // Mostramos los rendimientos (Ganancia = Monto Final - Capital Inicial)
+                    // Usamos .ToString("C") para formatearlo como moneda (Ej: $150.000,00)
 
-                // Buscamos el valor máximo en nuestro diccionario de resultados
-                decimal montoMaximo = resultados.Values.Max();
+                    // Provincia
+                    lblProvinciaAnual.Text = (provAnual - CAPITAL_INICIAL).ToString("C", new CultureInfo("es-AR"));
+                    lblProvinciaTrimestral.Text = (provTrim - CAPITAL_INICIAL).ToString("C", new CultureInfo("es-AR"));
+                    lblProvinciaMensual.Text = (provMes - CAPITAL_INICIAL).ToString("C", new CultureInfo("es-AR"));
 
-                // Buscamos la clave (el nombre) que corresponde a ese valor máximo
-                string mejorOpcionNombre = resultados.First(kvp => kvp.Value == montoMaximo).Key;
+                    // Nación
+                    lblNacionAnual.Text = (nacionAnual - CAPITAL_INICIAL).ToString("C", new CultureInfo("es-AR"));
+                    lblNacionTrimestral.Text = (nacionTrim - CAPITAL_INICIAL).ToString("C", new CultureInfo("es-AR"));
+                    lblNacionMensual.Text = (nacionMes - CAPITAL_INICIAL).ToString("C", new CultureInfo("es-AR"));
 
-                // Calculamos la ganancia
-                decimal gananciaMaxima = montoMaximo - CAPITAL_INICIAL;
+                    // Hipotecario
+                    lblHipotecarioAnual.Text = (hipoAnual - CAPITAL_INICIAL).ToString("C", new CultureInfo("es-AR"));
+                    lblHipotecarioTrimestral.Text = (hipoTrim - CAPITAL_INICIAL).ToString("C", new CultureInfo("es-AR"));
+                    lblHipotecarioMensual.Text = (hipoMes - CAPITAL_INICIAL).ToString("C", new CultureInfo("es-AR"));
 
-                // Mostramos el mensaje final
-                lblMejorOpcion.Text = $"La opción más rentable es: {mejorOpcionNombre}, " +
-                                      $"con un rendimiento de {gananciaMaxima.ToString("C", new CultureInfo("es-AR"))} " +
-                                      $"(Monto final: {montoMaximo.ToString("C", new CultureInfo("es-AR"))})";
+
+
+                    // ----- PASO 5: MOSTRAR MEJOR OPCIÓN -----
+
+                    // Buscamos el valor máximo en nuestro diccionario de resultados
+                    decimal montoMaximo = resultados.Values.Max();
+
+                    // Buscamos la clave (el nombre) que corresponde a ese valor máximo
+                    string mejorOpcionNombre = resultados.First(kvp => kvp.Value == montoMaximo).Key;
+
+                    // Calculamos la ganancia
+                    decimal gananciaMaxima = montoMaximo - CAPITAL_INICIAL;
+
+                    // Mostramos el mensaje final
+                    lblMejorOpcion.Text = $"La opción más rentable es: {mejorOpcionNombre}, " +
+                                          $"con un rendimiento de {gananciaMaxima.ToString("C", new CultureInfo("es-AR"))} " +
+                                          $"(Monto final: {montoMaximo.ToString("C", new CultureInfo("es-AR"))})";
+
+                    pnlResultados.Visible = true; // Para mostrar el panel
+                }
             }
             catch (FormatException ex)
             {
@@ -221,15 +240,25 @@ namespace presentacionWebForm
             lblHipotecarioMensual.Text = "-";
             lblMejorOpcion.Text = "";
         }
+
+        private void LimpiarTodo()
+        {
+            btnProvincia2025.Text = "";
+            btnProvincia2024.Text = "";
+            btnProvincia2023.Text = "";
+
+            btnNacion2025.Text = "";
+            btnNacion2024.Text = "";
+            btnNacion2023.Text = "";
+
+            btnHipotecario2025.Text = "";
+            btnHipotecario2024.Text = "";
+            btnHipotecario2023.Text = "";
+
+            lblError.Visible = false;  // Oculta el texto de error
+            pnlResultados.Visible = false; // Oculta el panel de resultados
+        }
+
     }
 }
-
-
-
-
-
-
-
-
-
 
