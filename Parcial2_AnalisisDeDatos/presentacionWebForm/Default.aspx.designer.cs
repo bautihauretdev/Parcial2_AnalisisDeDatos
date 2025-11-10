@@ -150,6 +150,15 @@ namespace presentacionWebForm
         protected global::System.Web.UI.WebControls.TextBox btnHipotecario2023;
 
         /// <summary>
+        /// lblError control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblError;
+
+        /// <summary>
         /// btnCalcular control.
         /// </summary>
         /// <remarks>
@@ -159,13 +168,40 @@ namespace presentacionWebForm
         protected global::System.Web.UI.WebControls.Button btnCalcular;
 
         /// <summary>
-        /// lblError control.
+        /// lblAnual control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblError;
+        protected global::System.Web.UI.WebControls.Label lblAnual;
+
+        /// <summary>
+        /// lblTrimestral control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblTrimestral;
+
+        /// <summary>
+        /// lblMensual control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblMensual;
+
+        /// <summary>
+        /// lblProvinciaTitulo control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblProvinciaTitulo;
 
         /// <summary>
         /// lblProvinciaAnual control.
@@ -177,6 +213,15 @@ namespace presentacionWebForm
         protected global::System.Web.UI.WebControls.Label lblProvinciaAnual;
 
         /// <summary>
+        /// lblProvinciaTrimestral control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblProvinciaTrimestral;
+
+        /// <summary>
         /// lblProvinciaMensual control.
         /// </summary>
         /// <remarks>
@@ -186,13 +231,13 @@ namespace presentacionWebForm
         protected global::System.Web.UI.WebControls.Label lblProvinciaMensual;
 
         /// <summary>
-        /// lblProvinciaTrimestral control.
+        /// lblNacionTitulo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblProvinciaTrimestral;
+        protected global::System.Web.UI.WebControls.Label lblNacionTitulo;
 
         /// <summary>
         /// lblNacionAnual control.
@@ -204,6 +249,15 @@ namespace presentacionWebForm
         protected global::System.Web.UI.WebControls.Label lblNacionAnual;
 
         /// <summary>
+        /// lblNacionTrimestral control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblNacionTrimestral;
+
+        /// <summary>
         /// lblNacionMensual control.
         /// </summary>
         /// <remarks>
@@ -213,13 +267,13 @@ namespace presentacionWebForm
         protected global::System.Web.UI.WebControls.Label lblNacionMensual;
 
         /// <summary>
-        /// lblNacionTrimestral control.
+        /// lblHipotecarioTitulo control.
         /// </summary>
         /// <remarks>
         /// Auto-generated field.
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblNacionTrimestral;
+        protected global::System.Web.UI.WebControls.Label lblHipotecarioTitulo;
 
         /// <summary>
         /// lblHipotecarioAnual control.
@@ -231,15 +285,6 @@ namespace presentacionWebForm
         protected global::System.Web.UI.WebControls.Label lblHipotecarioAnual;
 
         /// <summary>
-        /// lblHipotecarioMensual control.
-        /// </summary>
-        /// <remarks>
-        /// Auto-generated field.
-        /// To modify move field declaration from designer file to code-behind file.
-        /// </remarks>
-        protected global::System.Web.UI.WebControls.Label lblHipotecarioMensual;
-
-        /// <summary>
         /// lblHipotecarioTrimestral control.
         /// </summary>
         /// <remarks>
@@ -247,6 +292,15 @@ namespace presentacionWebForm
         /// To modify move field declaration from designer file to code-behind file.
         /// </remarks>
         protected global::System.Web.UI.WebControls.Label lblHipotecarioTrimestral;
+
+        /// <summary>
+        /// lblHipotecarioMensual control.
+        /// </summary>
+        /// <remarks>
+        /// Auto-generated field.
+        /// To modify move field declaration from designer file to code-behind file.
+        /// </remarks>
+        protected global::System.Web.UI.WebControls.Label lblHipotecarioMensual;
 
         /// <summary>
         /// lblMejorOpcion control.
