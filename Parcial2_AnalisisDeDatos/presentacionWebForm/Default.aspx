@@ -12,6 +12,7 @@
                     <!-- TÍTULO -->
                     <div class="planilla-header">
                         <h2>Inversión Plazo Fijo</h2>
+                        <p>Ingrese los valores históricos de los plazos fijos anuales de los últimos 3 años para cada banco</p>
                     </div>
 
                     <!-- BANCO / AÑOS / MONTO -->
@@ -54,12 +55,12 @@
 
             <!-- MUESTRA DE RESULTADOS -->
             <asp:Panel ID="pnlResultados" runat="server" Visible="false">
-                <div class="row g-3 mt-2">
+                <div class="row g-1 mt-1">
                     <div class="col">
                         <div class="card">
                             <!-- TÍTULO RESULTADOS -->
                             <div class="planilla-header">
-                                <h2>Resultados Obtenidos</h2>
+                                <h2>Rendimiento obtenido por banco y modalidad</h2>
                             </div>
 
                             <!-- TABLA DE RESULTADOS -->

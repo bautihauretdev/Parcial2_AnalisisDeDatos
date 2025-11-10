@@ -70,9 +70,11 @@ h2, h3 {
 
 .planilla-header {
     display: flex;
-    justify-content: center;
-    align-items: center;
-    margin-bottom: 6px;
+    flex-direction: column; /* organiza verticalmente h2 y p */
+    justify-content: center; /* centra verticalmente el contenido dentro del div si tiene altura */
+    align-items: center; /* centra horizontalmente h2 y p */
+    text-align: center; /* asegura que el texto del p también quede centrado */
+    gap: 0.25rem; /* separa h2 y p */
 }
 
     .planilla-header h2 {

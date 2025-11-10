@@ -146,7 +146,7 @@ namespace presentacionWebForm
                     decimal gananciaMaxima = montoMaximo - CAPITAL_INICIAL;
 
                     // Mostramos el mensaje final
-                    lblMejorOpcion.Text = $"La opción más rentable es: {mejorOpcionNombre}, " +
+                    lblMejorOpcion.Text = $"La opción más rentable es {mejorOpcionNombre}, " +
                                           $"con un rendimiento de {gananciaMaxima.ToString("C", new CultureInfo("es-AR"))} " +
                                           $"(Monto final: {montoMaximo.ToString("C", new CultureInfo("es-AR"))})";
 
